@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Jun 11 14:37:57 CST 2020","Thu Jun 11 14:37:57 CST 2020","228","Test_cases","test_project_api","","","","test_search_all_project_list",""
+"passed","Thu Jun 11 14:37:56 CST 2020","Thu Jun 11 14:37:57 CST 2020","211","Test_cases","test_login","","","","test_login","
+    登陆
+    :return:
+    "

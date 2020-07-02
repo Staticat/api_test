@@ -1,0 +1,21 @@
+[ {
+  "uid" : "c12095c82cf87d34",
+  "name" : "test_search_all_project_list",
+  "time" : {
+    "start" : 1591857477253,
+    "stop" : 1591857477481,
+    "duration" : 228
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "95838b6e9363ee46",
+  "name" : "test_login",
+  "time" : {
+    "start" : 1591857476795,
+    "stop" : 1591857477006,
+    "duration" : 211
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

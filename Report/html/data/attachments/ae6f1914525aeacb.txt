@@ -1,0 +1,4 @@
+[32mINFO    [0m api:assert_.py:4 响应成功
+[32mINFO    [0m api:assert_.py:6 响应码：200
+[32mINFO    [0m api:assert_.py:4 响应成功
+[32mINFO    [0m api:assert_.py:6 响应码：200

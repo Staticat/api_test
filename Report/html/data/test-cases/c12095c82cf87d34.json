@@ -1,0 +1,111 @@
+{
+  "uid" : "c12095c82cf87d34",
+  "name" : "test_search_all_project_list",
+  "fullName" : "Test_cases.test_project_api#test_search_all_project_list",
+  "historyId" : "32a2874fa6b73fd57fda24d38a277e5c",
+  "time" : {
+    "start" : 1591857477253,
+    "stop" : 1591857477481,
+    "duration" : 228
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "get_token",
+    "time" : {
+      "start" : 1591857477013,
+      "stop" : 1591857477252,
+      "duration" : 239
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  }, {
+    "name" : "get_headers",
+    "time" : {
+      "start" : 1591857477253,
+      "stop" : 1591857477253,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "ae6f1914525aeacb",
+      "name" : "log",
+      "source" : "ae6f1914525aeacb.txt",
+      "type" : "text/plain",
+      "size" : 197
+    }, {
+      "uid" : "7877d984ab78f342",
+      "name" : "stdout",
+      "source" : "7877d984ab78f342.txt",
+      "type" : "text/plain",
+      "size" : 1424
+    }, {
+      "uid" : "cfba0720531a142c",
+      "name" : "stderr",
+      "source" : "cfba0720531a142c.txt",
+      "type" : "text/plain",
+      "size" : 214
+    } ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : true,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 3
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "Test_cases"
+  }, {
+    "name" : "suite",
+    "value" : "test_project_api"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-7GJCQ60"
+  }, {
+    "name" : "thread",
+    "value" : "4988-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "Test_cases.test_project_api"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "c12095c82cf87d34.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,8 @@
+#01 test_login
+-   data : {"openId": "opa9N5Vk09O4E7anfm8fwYWM9B8U"}
+#02 test_search_project
+-   data : {"projectId":"537712031151685632","type":0,"subTypeName":"","taskId":"715290265899762513","taskProgress":0,"address":"深圳市福田区人民政府附近","nearBy":"深圳市福田区福民路214号","city":"深圳市","content":"测试发布一个自动化动态","originalContent":"测试发布一个自动化动态","country":"中国","county":"福田区","imgs":[{"compressImgPath":"https://xcxprd.tgct.com.cn/api/fileservice/file/dynamic/download/718186494132486158","imgPath":"https://xcxprd.tgct.com.cn/api/fileservice/file/dynamic/download/718178414225260617","compressImgId":"718186494132486158","id":"718178414225260617"},{"compressImgPath":"https://xcxprd.tgct.com.cn/api/fileservice/file/dynamic/download/718186494132486159","imgPath":"https://xcxprd.tgct.com.cn/api/fileservice/file/dynamic/download/718178414225260618","compressImgId":"718186494132486159","id":"718178414225260618"}],"videos":[{"id":"718186494132486162"}],"fileIdList":["718186494132486160","718186494132486161"],"latitude":22.52291,"longitude":114.05454,"province":"广东省","receiveUserIdList":[],"receiveTeamIdList":[],"accessableUserIdList":["-1"],"accessableTeamIdList":["-1"],"weather":"阴","temperature":"29℃","remindAddDto":null,"remindId":""} #1 发布动态接口数据
+#03
+-   data : {}
+
+

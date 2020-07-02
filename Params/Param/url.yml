@@ -1,0 +1,10 @@
+#0  test_login
+- url: /api/userservice/user/openIDLogin
+#1 test_add_dynamic
+- url: /api/workcircleservice/dynamic/addDynamic
+#2 test_add_dynamic_remark
+- url: /api/workcircleservice/dynamic/addRemark
+#3 test_addRemarkResponse
+- url: /api/workcircleservice/dynamic/addRemarkResponse
+#4 test_del_dynamic_remark
+- url: /api/workcircleservice/dynamic/deleteRemark
