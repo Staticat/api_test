@@ -1,6 +1,10 @@
+"""
+version : v0.9.1
+author: chenjie
+"""
 import pytest
 from Common import method
-from Params import read_yml
+from Params.read_yml import read_data,read_url
 from Config.read_config import appId
 
 def test_login():
@@ -8,9 +12,9 @@ def test_login():
     登陆
     :return:
     '''
-    url=method.get_url(0)
+    url=read_url(0)
     headers = {"Accept": "*/*", "appId": appId()}
-    data = read_yml.read_data(0,'data')
+    data = read_data(0)
     r=method.HttpRequest()
     res =r.run_method(url=url,method="POST",data=data,headers=headers)
     # print(res.json())

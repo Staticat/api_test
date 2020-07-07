@@ -1,10 +1,36 @@
 #0  test_login
 - url: /api/userservice/user/openIDLogin
-#1 test_add_dynamic
+#1 test_add_dynamic   test_finish_task
 - url: /api/workcircleservice/dynamic/addDynamic
 #2 test_add_dynamic_remark
 - url: /api/workcircleservice/dynamic/addRemark
 #3 test_addRemarkResponse
 - url: /api/workcircleservice/dynamic/addRemarkResponse
-#4 test_del_dynamic_remark
+#4 test_addLaud
+- url: /api/workcircleservice/dynamic/addLaud
+#5 test_deleteLaud
+- url: /api/workcircleservice/dynamic/deleteLaud
+#6 test_dynamic_detail
+- url: /api/workcircleservice/dynamic/detail
+#7 test_del_dynamic_remark
 - url: /api/workcircleservice/dynamic/deleteRemark
+#8 test_del_dynamic
+- url: /api/workcircleservice/dynamic/delete
+#9 test_add_task1  test_add_task2
+- url: /api/projectservice/task/add
+#10 test_submitVerify_task
+- url: /api/projectservice/task/submitVerify
+#11 test_detail_task
+- url: /api/projectservice/task/detail
+#12 test_start_task
+- url: /api/projectservice/task/startTask
+#13 test_signCertificate
+- url: /api/signservice/sign/signCertificate
+#14 test_startDesignTask
+- url: /api/projectservice/task/startDesignTask
+#15 test_taskDeliverables_add
+- url: /api/projectservice/taskDeliverables/add
+#16 test_submitDesignVerify
+- url: /api/projectservice/task/submitDesignVerify
+#17 test_designVerify
+- url: /api/projectservice/task/designVerify

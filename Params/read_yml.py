@@ -2,11 +2,9 @@
 import yaml
 import os
 import getcwd
-from Common import method
-from Params import read_yml
+from Config import read_config
 
-
-def read_data(index=None,param=None):
+def read_data(index=None):
     '''
     :param index:
     :param param:
@@ -19,9 +17,10 @@ def read_data(index=None,param=None):
         yaml.warnings({'YAMLLoadWarning': False})
         cf = yaml.load(cont)
         y.close()
-    return cf[index][param]
+    return cf[index]['data']
 
-def read_url(index=None,param=None):
+
+def read_url(index=None):
     '''
     :param index:
     :param param:
@@ -34,14 +33,19 @@ def read_url(index=None,param=None):
         yaml.warnings({'YAMLLoadWarning': False})
         cf = yaml.load(cont)
         y.close()
-    return cf[index][param]
+
+    test_url = read_config.read_config("»ù´¡ÐÅÏ¢", 'url')
+    url = '/'.join([test_url,cf[index]['url']])
+    return url
+        # return '/'.join([test_url,url])
+    # return cf[index][param]
         # print(cf[0]['openId'])
 
 if __name__ == '__main__':
-    print(read_url(0,'url'))
-    print(read_url(1, 'url'))
-    print(read_data(0,'data'))
-    print(read_data(1,'data'))
-    print(method.get_url(read_yml.read_url(1,'url')))
+    print(read_url(0))
+    print(read_url(1))
+    print(read_data(0))
+    print(read_data(2))
+
 
 

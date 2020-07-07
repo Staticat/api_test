@@ -1,6 +1,6 @@
 from Common import method
 import requests
-from Params import read_yml
+from Params.read_yml import read_data,read_url
 from Config.read_config import projectId
 import pytest
 # import json
@@ -52,4 +52,21 @@ import pytest
 #     a.append(res.json()["resModel"][i]["id"])
 # print(a)
 
-print(method.get_url(0))
+# def submitVerify_task():
+#     url = read_url(10)
+#     headers={'Accept': '*/*', 'Content-Type': 'application/json', 'appId': 'wxcd03432c1d3bfcb7', 'token': '5bfe5f7a-6458-4e33-b605-1fe326a25c96'}
+#     json={"content":"提交检验","imgList":[],"taskId":"728324033623359516","receiveUserIdList":[],"receiveTeamIdList":[],"actTaskId":475380,"overwriteVerifyUserIdList":["513042573758038021"]}
+#     r = method.HttpRequest()
+#     res= r.run_method(url=url, method="POST", json=json, headers=headers)
+#     print(res.text)
+# submitVerify_task()
+
+def submitDesignVerify():
+    url = read_url(16)
+    headers = {'Accept': '*/*', 'Content-Type': 'application/json', 'appId': 'wxcd03432c1d3bfcb7', 'token': '5bfe5f7a-6458-4e33-b605-1fe326a25c96'}
+    json = {"actTaskId":'473619',"content":"设计任务提交审核","imgList":[],"taskId": '728324033623359602',"overwriteVerifyUserIdList":[userId()]}
+    r = method.HttpRequest()
+    res= r.run_method(url=url, method="get", json=json, headers=headers)
+    print(res.text)
+
+submitDesignVerify()

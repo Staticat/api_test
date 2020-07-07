@@ -1,16 +1,6 @@
 import requests
 import json
-import pprint
 from Common import assert_
-from Config import read_config
-from logs.log import log1
-from Params import read_yml
-
-def get_url(num):
-    test_url  = read_config.read_config("基础信息",'url')
-    url =  '/'.join([test_url,read_yml.read_url(num,'url')])
-    return url
-    # return '/'.join([test_url,url])
 
 class HttpRequest(object):
     """
@@ -28,7 +18,7 @@ class HttpRequest(object):
 
     def del_method(self,url,headers=None,params=None):
         res = requests.delete(url,params=params,headers=headers)
-        # assert_.assert_(res)
+        assert_.assert_(res)
         return res
 
     def run_method(self,method,url,data=None,headers=None,json=None,params=None):
