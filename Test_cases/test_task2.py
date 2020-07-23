@@ -3,14 +3,12 @@ version : v0.9.1
 author: chenjie
 """
 from Common import method
-from Params.read_yml import read_data,read_url
+from Params.rw_yml import read_data,read_url,set_data_yaml
 import pytest
-from Config.read_config import projectId,userId
-
 """
 此用例为设计任务从创建到验证合格过程
 """
-@pytest.fixture(name="taskId2",scope='module')
+
 def test_add_task2(get_headers_json):
     """
     添加设计任务
@@ -19,12 +17,14 @@ def test_add_task2(get_headers_json):
     """
     url = read_url(9)
     headers=get_headers_json
-    json = read_data(3)
+    json = read_data(18)
     r = method.HttpRequest()
     res = r.run_method(url=url, method="POST", json=json, headers=headers)
-    return res.json()["resModel"]  # 返回任务id
+    taskId = res.json()["resModel"]
+    set_data_yaml("taskId",taskId)  # 任务id写入data.yaml文件
+    set_data_yaml("id",taskId)  # 任务id写入data.yaml文件
 
-def test_startDesignTask(get_headers_json,taskId2):
+def test_startDesignTask(get_headers_json):
     """
     开始设计任务
     :param get_headers_json:
@@ -33,11 +33,11 @@ def test_startDesignTask(get_headers_json,taskId2):
     """
     url = read_url(14)
     headers = get_headers_json
-    json = {"content":"测试设计任务今日开始","imgList":[],"taskId":taskId2,"receiveUserIdList":[],"receiveTeamIdList":[]}
+    json = read_data(19)
     r = method.HttpRequest()
     r.run_method(url=url, method="POST", json=json, headers=headers)
 
-def test_taskDeliverables_add(get_headers_json,taskId2):
+def test_taskDeliverables_add(get_headers_json):
     """
     提交设计成果
     :param get_headers_json:
@@ -46,12 +46,11 @@ def test_taskDeliverables_add(get_headers_json,taskId2):
     """
     url = read_url(15)
     headers = get_headers_json
-    json = {"content":"测试提交成果","fileIdList":[],"imgList":[],"videoList":[],"taskId":taskId2}
+    json = read_data(20)
     r = method.HttpRequest()
     r.run_method(url=url, method="POST", json=json, headers=headers)
 
-@pytest.fixture(name="actTaskId3",scope='module')
-def test_detail_task3(get_headers_json,taskId2):
+def test_detail_task3(get_headers_json):
     """
     查看任务详情，返回任务完成节点id
     :param get_headers_json:
@@ -60,20 +59,25 @@ def test_detail_task3(get_headers_json,taskId2):
     """
     url = read_url(11)
     headers=get_headers_json
-    data = {"id":taskId2}
+    data = read_data(11)
     r = method.HttpRequest()
     res = r.run_method(url=url, method="get", data=data, headers=headers)
-    return res.json()["resModel"]["activitiMap"]['currentTaskList'][0]['id']
+    actTaskId=res.json()["resModel"]["activitiMap"]['currentTaskList'][0]['id']
+    set_data_yaml("actTaskId", actTaskId)
 
-def test_submitDesignVerify(get_headers_json,taskId2,actTaskId3):
+def test_submitDesignVerify(get_headers_json):
+    """
+    设计任务提交审核
+    :param get_headers_json:
+    :return:
+    """
     url = read_url(16)
     headers = get_headers_json
-    json = {"actTaskId":actTaskId3,"content":"设计任务提交审核","imgList":[],"taskId":taskId2,"overwriteVerifyUserIdList":[userId()]}
+    json = read_data(21)
     r = method.HttpRequest()
     r.run_method(url=url, method="POST", json=json, headers=headers)
 
-@pytest.fixture(name="actTaskId4",scope='module')
-def test_detail_task4(get_headers_json,taskId2):
+def test_detail_task4(get_headers_json):
     """
     查看任务详情，返回任务检验节点id
     :param get_headers_json:
@@ -82,15 +86,16 @@ def test_detail_task4(get_headers_json,taskId2):
     """
     url = read_url(11)
     headers=get_headers_json
-    data = {"id":taskId2}
+    data =  read_data(11)
     r = method.HttpRequest()
     res = r.run_method(url=url, method="get", data=data, headers=headers)
-    return res.json()["resModel"]["activitiMap"]['currentTaskList'][0]['id']
+    actTaskId=res.json()["resModel"]["activitiMap"]['currentTaskList'][0]['id']
+    set_data_yaml("actTaskId", actTaskId)
 
-def test_designVerify(get_headers_json,taskId2,actTaskId4):
+def test_designVerify(get_headers_json):
     url = read_url(17)
     headers = get_headers_json
-    json = {"actTaskId":actTaskId4,"content":"测试审核通过","fileIdList":[],"imgList":[],"videoList":[],"pass":1,"taskId":taskId2,"receiveTeamIdList":[],"receiveUserIdList":[]}
+    json =  read_data(22)
     r = method.HttpRequest()
     r.run_method(url=url, method="POST", json=json, headers=headers)
 
