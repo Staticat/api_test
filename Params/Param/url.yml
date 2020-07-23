@@ -34,3 +34,7 @@
 - url: /api/projectservice/task/submitDesignVerify
 #17 test_designVerify
 - url: /api/projectservice/task/designVerify
+#18 test_updateEnableSignFlag
+- url: /api/projectservice/task/updateEnableSignFlag
+#19 test_verify
+- url: api/projectservice/task/verify

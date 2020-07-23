@@ -1,8 +1,11 @@
 from Common import method
 import requests
-from Params.read_yml import read_data,read_url
+from Params.rw_yml import read_data,read_url
 from Config.read_config import projectId
 import pytest
+import yaml
+from ruamel import yaml
+import json
 # import json
 # data = read_yml.read_data(1,'data')
 # data1 = read_yml.read_data(0,'data')
@@ -61,12 +64,20 @@ import pytest
 #     print(res.text)
 # submitVerify_task()
 
-def submitDesignVerify():
-    url = read_url(16)
-    headers = {'Accept': '*/*', 'Content-Type': 'application/json', 'appId': 'wxcd03432c1d3bfcb7', 'token': '5bfe5f7a-6458-4e33-b605-1fe326a25c96'}
-    json = {"actTaskId":'473619',"content":"设计任务提交审核","imgList":[],"taskId": '728324033623359602',"overwriteVerifyUserIdList":[userId()]}
-    r = method.HttpRequest()
-    res= r.run_method(url=url, method="get", json=json, headers=headers)
-    print(res.text)
+# def submitDesignVerify():
+#     url = read_url(16)
+#     headers = {'Accept': '*/*', 'Content-Type': 'application/json', 'appId': 'wxcd03432c1d3bfcb7', 'token': '5bfe5f7a-6458-4e33-b605-1fe326a25c96'}
+#     json = {"actTaskId":'473619',"content":"设计任务提交审核","imgList":[],"taskId": '728324033623359602',"overwriteVerifyUserIdList":[userId()]}
+#     r = method.HttpRequest()
+#     res= r.run_method(url=url, method="get", json=json, headers=headers)
+#     print(res.text)
+#
+# submitDesignVerify()
 
-submitDesignVerify()
+# def ttt():
+#     parentId = "728324033619165816"
+#     # with open('D:\\Pycharm\\api_test\\Params\\Param\data.yml', "w", encoding="utf-8") as f:
+#     #     yaml.dump(parentId, f, Dumper=yaml.RoundTripDumper)
+#
+#
+# ttt()

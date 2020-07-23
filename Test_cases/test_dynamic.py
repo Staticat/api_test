@@ -3,11 +3,9 @@ version : v0.9.1
 author: chenjie
 """
 from Common import method
-from Params.read_yml import read_data,read_url
+from Params.rw_yml import read_data,read_url,set_data_yaml
 import pytest
-from Config.read_config import projectId,userId
 
-@pytest.fixture(name="dynamicId",scope='module')
 def test_add_dynamic(get_headers_json):
     """
     发布动态（带图片/文件/任务）
@@ -19,10 +17,11 @@ def test_add_dynamic(get_headers_json):
     headers = get_headers_json
     r = method.HttpRequest()
     res = r.run_method(url=url, method="POST", json=json, headers=headers)
-    return res.json()["resModel"] #返回动态id
+    dynamicId=res.json()["resModel"]
+    set_data_yaml("dynamicId",dynamicId) #动态id写入data.yaml文件
+    set_data_yaml("id",dynamicId) #动态id写入data.yaml文件
 
-@pytest.fixture(name="remarkId",scope='module')
-def test_add_dynamic_remark(get_headers_json,dynamicId):
+def test_add_dynamic_remark(get_headers_json):
     """
     动态评论
     :param get_headers_json:
@@ -30,40 +29,39 @@ def test_add_dynamic_remark(get_headers_json,dynamicId):
     :return: remarkId
     """
     url = read_url(2)
-    json = {"content":"测试","dynamicId":dynamicId,"projectId":projectId(),"imgs":[]}
+    json = read_data(2)
     headers = get_headers_json
     r = method.HttpRequest()
     res = r.run_method(url=url, method="POST", json=json, headers=headers)
-    return res.json()["resModel"]["id"] #返回评论的id
+    remarkId=res.json()["resModel"]["id"]
+    set_data_yaml("remarkId",remarkId) #评论id写入data.yaml文件
 
-def test_addRemarkResponse(get_headers_json,dynamicId,remarkId):
+def test_addRemarkResponse(get_headers_json):
     """
     回复评论
     :param get_headers_json:
-    :param dynamicId:
-    :param remarkId:
     :return:
     """
     url = read_url(3)
-    json = {"content":"测试","dynamicId":dynamicId,"projectId":projectId(),"imgs":[],"remarkId":remarkId,"responseeUserId":userId()}
+    json = read_data(3)
     headers = get_headers_json
     r = method.HttpRequest()
     r.run_method(url=url, method="POST", json=json, headers=headers)
 
-def test_addLaud(get_headers,dynamicId):
+def test_addLaud(get_headers):
     """
     动态点赞
-    :param dynamicId:
+    :param get_headers:
     :return:
     """
     url = read_url(4)
     headers = get_headers
-    data={"dynamicId":dynamicId,"projectId":projectId()}
+    data= read_data(4)
     r = method.HttpRequest()
     r.run_method(url=url, method="POST", data=data, headers=headers)
 
 @pytest.mark.testdel
-def test_deleteLaud(get_headers_json,dynamicId):
+def test_deleteLaud(get_headers_json):
     """
     动态取消点赞
     :param get_headers_json:
@@ -71,12 +69,12 @@ def test_deleteLaud(get_headers_json,dynamicId):
     :return:
     """
     url = read_url(5)
-    params = {"dynamicId":dynamicId,"projectId":projectId()}
+    params = read_data(4)
     headers = get_headers_json
     r = method.HttpRequest()
     r.run_method(url=url, method="del",headers=headers,params=params)
 
-def test_dynamic_detail(get_headers_json,dynamicId):
+def test_dynamic_detail(get_headers_json):
     """
     查询动态详情
     :param get_headers_json:
@@ -85,12 +83,12 @@ def test_dynamic_detail(get_headers_json,dynamicId):
     """
     url = read_url(6)
     headers = get_headers_json
-    data={"id":dynamicId,"projectId":projectId()}
+    data = read_data(7)
     r = method.HttpRequest()
     r.run_method(url=url, method="get", data=data, headers=headers)
 
 @pytest.mark.testdel
-def test_del_dynamic_remark(get_headers_json,dynamicId,remarkId):
+def test_del_dynamic_remark(get_headers_json):
     """
     删除评论
     :param get_headers_json:
@@ -99,13 +97,13 @@ def test_del_dynamic_remark(get_headers_json,dynamicId,remarkId):
     :return:
     """
     url =read_url(7)
-    params = {"dynamicId":dynamicId,"projectId":projectId(),"remarkId":remarkId}
+    params = read_data(5)
     headers = get_headers_json
     r = method.HttpRequest()
     r.run_method(url=url, method="del",headers=headers,params=params)
 
 @pytest.mark.testdel
-def test_del_dynamic(get_headers_json,dynamicId):
+def test_del_dynamic(get_headers_json):
     """
     删除动态
     :param get_headers_json:
@@ -113,7 +111,7 @@ def test_del_dynamic(get_headers_json,dynamicId):
     :return:
     """
     url = read_url(8)
-    params = {"id":dynamicId}
+    params = read_data(6)
     headers = get_headers_json
     r = method.HttpRequest()
     r.run_method(url=url, method="del",headers=headers,params=params)

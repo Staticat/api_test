@@ -1,9 +1,9 @@
 import requests
 from Common import method
 import json
-from Params import read_yml
-url = method.get_url(read_yml.read_url(1,'url'))
-json1 = read_yml.read_data(1,'data')
+from Params import rw_yml
+url = method.get_url(rw_yml.read_url(1, 'url'))
+json1 = rw_yml.read_data(1, 'data')
 # json1={
 #     "projectId":"537712031151685632",
 #     "type":0,

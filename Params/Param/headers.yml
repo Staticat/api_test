@@ -1,0 +1,4 @@
+#headers 0  默认是带'Content-Type': 'application/json' 格式的
+- headers: {'Accept': '*/*', 'Content-Type': 'application/json', 'appId': 'wxcd03432c1d3bfcb7', 'token': 'cb0274b0-f36d-4a81-b41c-b94154a6fc44'}
+#headers 1
+- headers: {'Accept': '*/*', 'appId': 'wxcd03432c1d3bfcb7', 'token': '9a3738c8-0453-41b2-a1bc-c4149eb2fe75'}

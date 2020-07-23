@@ -7,10 +7,7 @@ def read_config(section,key):
     config_path = os.path.join(path, 'Config\Config.ini') #获取配置文件路径
     config = configparser.ConfigParser()
     config.read(config_path,encoding="utf-8-sig")
-
-    # Config.get(section,key)
     return config.get(section,key)
-# print(read_config("基础信息","appId"))
 
 def appId():
     appId=read_config("基础信息","appId")
@@ -23,3 +20,7 @@ def projectId():
 def userId():
     userId = read_config("基础信息", "userId")
     return userId
+
+def openId():
+    openId = read_config("基础信息", "openId")
+    return openId
